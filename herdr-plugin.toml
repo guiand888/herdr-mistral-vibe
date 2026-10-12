@@ -1,6 +1,6 @@
 id = "herdr-vibe"
 name = "Herdr Vibe"
-version = "0.1.0"
+version = "1.0.0"
 min_herdr_version = "0.7.0"
 description = "Start Mistral Vibe sessions in Herdr panes"
 platforms = ["linux", "macos", "windows"]
