@@ -32,6 +32,8 @@ The `[[startup]]` hook runs after every Herdr server start (boot, update, restar
 herdr plugin action invoke update-vibe-integration --plugin herdr-vibe
 ```
 
+The cloned plugin is kept inside a supported version range — at least 1.0.0, below 2.0.0. A clone that is too old is updated automatically; an incompatible newer version is refused with a message instead of installed. Bump the range in `scripts/bootstrap-vibe-integration.sh` when releasing this plugin alongside a companion update.
+
 To remove the integration permanently instead of letting it come back on the next start:
 
 ```bash
