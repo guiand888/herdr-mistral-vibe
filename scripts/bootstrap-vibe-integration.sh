@@ -23,6 +23,7 @@ fi
 
 command -v vibe >/dev/null 2>&1 || { log "vibe is not on PATH; nothing to integrate"; exit 0; }
 command -v git >/dev/null 2>&1 || { log "git is not on PATH; run the installer manually"; exit 1; }
+command -v python3 >/dev/null 2>&1 || { log "python3 is not on PATH; the reporting hooks cannot run"; exit 0; }
 
 if [ ! -d "$VIBE_PLUGIN_DIR/.git" ]; then
   if ! git clone --quiet "$VIBE_PLUGIN_REPO" "$VIBE_PLUGIN_DIR"; then

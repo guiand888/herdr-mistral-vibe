@@ -24,19 +24,19 @@ herdr plugin link /path/to/herdr-vibe
 
 ## Startup behavior
 
-On each server start (Herdr 0.7.5 or newer; older versions ignore the startup hook), the plugin makes sure the companion Vibe integration from [`herdr-vibe`](https://github.com/guiand888/herdr-vibe) is in place: it clones that repository to `~/.vibe/plugins/herdr-vibe` when missing and runs its installer, which registers the state-reporting hooks. The command is listed in the `herdr plugin install` preview, skips when `vibe` is not on `PATH`, and is idempotent.
+The plugin makes sure the companion Vibe integration from [`herdr-vibe`](https://github.com/guiand888/herdr-vibe) is in place: it clones that repository to `~/.vibe/plugins/herdr-vibe` when missing and runs its installer, which registers the state-reporting hooks. It requires `vibe`, `git`, and `python3` on `PATH`, skips cleanly when they are absent, and is idempotent.
+
+The `[[startup]]` hook runs after every Herdr server start (boot, update, restart, or live handoff — Herdr 0.7.5 or newer; older versions ignore it), so hook updates flow through on each restart. It does **not** run when a plugin is installed or linked into an already-running server. To bootstrap or update without waiting for the next restart:
+
+```bash
+herdr plugin action invoke update-vibe-integration --plugin herdr-vibe
+```
 
 To remove the integration permanently instead of letting it come back on the next start:
 
 ```bash
 touch "$(herdr plugin config-dir herdr-vibe)/disable-vibe-integration-bootstrap"
 ~/.vibe/plugins/herdr-vibe/install.sh uninstall
-```
-
-To update the cloned plugin without restarting Herdr:
-
-```bash
-herdr plugin action invoke update-vibe-integration --plugin herdr-vibe
 ```
 
 ## Usage
