@@ -22,6 +22,23 @@ Or, from a local checkout:
 herdr plugin link /path/to/herdr-vibe
 ```
 
+## Startup behavior
+
+On each server start (Herdr 0.7.5 or newer; older versions ignore the startup hook), the plugin makes sure the companion Vibe integration from [`herdr-vibe`](https://github.com/guiand888/herdr-vibe) is in place: it clones that repository to `~/.vibe/plugins/herdr-vibe` when missing and runs its installer, which registers the state-reporting hooks. The command is listed in the `herdr plugin install` preview, skips when `vibe` is not on `PATH`, and is idempotent.
+
+To remove the integration permanently instead of letting it come back on the next start:
+
+```bash
+touch "$(herdr plugin config-dir herdr-vibe)/disable-vibe-integration-bootstrap"
+~/.vibe/plugins/herdr-vibe/install.sh uninstall
+```
+
+To update the cloned plugin without restarting Herdr:
+
+```bash
+herdr plugin action invoke update-vibe-integration --plugin herdr-vibe
+```
+
 ## Usage
 
 Start a Mistral Vibe pane:

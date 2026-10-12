@@ -1,15 +1,26 @@
 id = "herdr-vibe"
 name = "Herdr Vibe"
-version = "1.0.0"
+version = "1.1.0"
 min_herdr_version = "0.7.0"
 description = "Start Mistral Vibe sessions in Herdr panes"
 platforms = ["linux", "macos", "windows"]
+
+[[startup]]
+platforms = ["linux", "macos"]
+command = ["sh", "scripts/bootstrap-vibe-integration.sh"]
 
 [[actions]]
 id = "start"
 title = "Start Vibe"
 contexts = ["workspace"]
 command = ["herdr", "plugin", "pane", "open", "--plugin", "herdr-vibe", "--entrypoint", "vibe"]
+
+[[actions]]
+id = "update-vibe-integration"
+title = "Update Vibe integration"
+contexts = ["workspace"]
+platforms = ["linux", "macos"]
+command = ["sh", "scripts/update-vibe-integration.sh"]
 
 [[panes]]
 id = "vibe"
