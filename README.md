@@ -11,7 +11,7 @@ Herdr cannot register unknown agent kinds, so `herdr agent start --kind vibe` is
 Requires Herdr 0.7 or newer and `vibe` on `PATH`.
 
 ```bash
-herdr plugin install <owner>/<this repository>
+herdr plugin install guiand888/herdr-mistral-vibe
 ```
 
 Or, from a local checkout:
@@ -37,7 +37,7 @@ type = "plugin_action"
 command = "herdr-vibe.start"
 ```
 
-The action opens a split pane running `vibe` (entrypoint `vibe`, also openable with `herdr plugin pane open --plugin herdr-vibe --entrypoint vibe`). For sidebar state, notifications, and session restore inside the pane, install the companion `herdr-vibe` plugin for the Mistral Vibe CLI, which implements Herdr's agent self-reporting protocol.
+The action opens a split pane running `vibe` (entrypoint `vibe`, also openable with `herdr plugin pane open --plugin herdr-vibe --entrypoint vibe`). For sidebar state, notifications, and session restore inside the pane, install the companion [`herdr-vibe`](https://github.com/guiand888/herdr-vibe) plugin for the Mistral Vibe CLI, which implements Herdr's agent self-reporting protocol.
 
 ## Maintainers
 
